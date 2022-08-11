@@ -1,10 +1,14 @@
 # ChadWM (My riced version)
 
-<img src="https://i.imgflip.com/5imrkq.jpg">
+<img width="200" src="https://i.imgflip.com/5imrkq.jpg">
 
 I've been using DWM for a while, so I thought why not used ChadWM cuz I'm a chad.
 
 FYI, ChadWM is basically a DWM rice/modif. So I basically riced the rice :)
+
+# Screenshots
+
+<img src="./screenshot.png">
 
 # Requirements
 
