@@ -1,29 +1,17 @@
-# chadwm (Initial look)
+# ChadWM (My riced version)
 
-<img src="https://github.com/siduck/chadwm/blob/screenshots/screenshots/initial_look.png">
-<img src="https://github.com/siduck/chadwm/blob/screenshots/screenshots/col_layout.png">
+<img src="https://i.imgflip.com/5imrkq.jpg">
 
-<img src="https://github.com/siduck/chadwm/blob/screenshots/screenshots/occ_act_tags.png">
-(empty workspaces have their color greyed out)
+I've been using DWM for a while, so I thought why not used ChadWM cuz I'm a chad.
 
-- NOTE: This is vanilla dwm bar (status2d patch for setting colors) not dwmblocks or polybar. 
-<img src="https://github.com/siduck/chadwm/blob/screenshots/screenshots/chadwm.png">
-- The small widget on the top right is an eww widget and thats old! I've improved the eww widget.
-<img src='https://i.redd.it/t1pvmqlq3oc81.png'>
-(catppuccin theme)
-<img src="https://github.com/siduck/chadwm/blob/screenshots/screenshots/gruvchad.png">
-(gruvbox material dark)
-
-# Tag preview (while hovering tag icon)
-
-https://user-images.githubusercontent.com/59060246/128050994-17f46934-6604-4430-bece-f60b0700b6be.mp4
+FYI, ChadWM is basically a DWM rice/modif. So I basically riced the rice :)
 
 # Requirements
 
 - dash (shell)
 - imlib2 
 - xsetroot package (status2d uses this to add colors on dwmbar)
-- JetbrainsMono Nerd Font or any nerd font but dont forget to set it in config.def.h
+- JetbrainsMono Nerd Font and Iosevka Font
 - Materiald design icon font - [link](https://github.com/Templarian/MaterialDesign-Font/blob/master/MaterialDesignIconsDesktop.ttf)
 - Make sure to setup your terminal's theme accordingly do chadwm's theme such as nord, onedark etc...
 
@@ -32,13 +20,13 @@ https://user-images.githubusercontent.com/59060246/128050994-17f46934-6604-4430-
 - feh
 - acpi
 - rofi
+- pavucontrol
 
 # Install
 
 ```
-git clone https://github.com/siduck/chadwm --depth 1  ~/.config
+git clone https://github.com/ahnaf-zamil/chadwm --depth 1  ~/.config
 cd ~/.config/chadwm/
-mv eww ~/.config
 sudo make install
 ```
 
@@ -93,32 +81,9 @@ sudo make install
 # Change themes
 
 - Bar  : in bar.sh (line 9) and config.def.h (line 35)
-- eww  : in eww.scss (line 1)
 - rofi : in config.rasi (line 15)
 
-# Eww
-
-- First, make sure you have copied the eww directory to your config:
-
-```
-cp -r ~/.config/chadwm/eww ~/.config/
-```
-
-- To launch the eww widget, you need the following command:
-
-```
-eww open eww
-```
-
-- If you use alsa to manage your audio, instead of pulseaudio or pipewire, you can also launch an alsa widget:
-
-```
-eww open alsa-gui
-```
-
-- It could be a good idea to add these lines to your autostart file, located at ~/.config/chadwm/scripts/run.sh
-
-# Credits
+# Credits (from origin author)
 
 - HUGE THANKS to [eProTaLT83](https://www.reddit.com/user/eProTaLT83). I wanted certain features in dwm like tabbar in monocle, tagpreview etc and he implemented my ideas and created patches for me! I can't even count the number of times he has helped me :v
 - @fitrh helped with [colorful tag patch](https://github.com/fitrh/dwm/issues/1)

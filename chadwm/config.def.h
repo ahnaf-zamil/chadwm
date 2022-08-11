@@ -3,13 +3,13 @@
 #include <X11/XF86keysym.h>
 
 /* appearance */
-static const unsigned int borderpx  = 0;        /* border pixel of windows */
+static const unsigned int borderpx  = 1;        /* border pixel of windows */
 static const unsigned int default_border = 0;   /* to switch back to default border after dynamic border resizing via keybinds */
 static const unsigned int snap      = 32;       /* snap pixel */
-static const unsigned int gappih    = 10;       /* horiz inner gap between windows */
-static const unsigned int gappiv    = 10;       /* vert inner gap between windows */
+static const unsigned int gappih    = 15;       /* horiz inner gap between windows */
+static const unsigned int gappiv    = 15;       /* vert inner gap between windows */
 static const unsigned int gappoh    = 10;       /* horiz outer gap between windows and screen edge */
-static const unsigned int gappov    = 10;       /* vert outer gap between windows and screen edge */
+static const unsigned int gappov    = 20;       /* vert outer gap between windows and screen edge */
 static const int smartgaps          = 0;        /* 1 means no outer gap when there is only one window */
 static const unsigned int systraypinning = 0;   /* 0: sloppy systray follows selected monitor, >0: pin systray to monitor X */
 static const unsigned int systrayspacing = 2;   /* systray spacing */
@@ -31,11 +31,11 @@ static const int colorfultag        = 1;        /* 0 means use SchemeSel for sel
 #define ICONSIZE 19   /* icon size */
 #define ICONSPACING 8 /* space between icon and title */
 
-static const char *fonts[]          = {"Iosevka:style:medium:size=12" ,"JetBrainsMono Nerd Font:style:medium:size=11",
-                                        "Material Design Icons Desktop:size=11" };
+static const char *fonts[]          = {"Iosevka:style:medium:size=13" ,"JetBrainsMono Nerd Font:style:medium:size=13",
+                                        "Material Design Icons Desktop:size=13" };
 
 // theme
-#include "themes/onedark.h"
+#include "themes/nord.h"
 
 static const char *colors[][3]      = {
     /*                     fg       bg      border */
@@ -50,24 +50,25 @@ static const char *colors[][3]      = {
     [SchemeTag3]       = { orange,  black,  black },
     [SchemeTag4]       = { green,   black,  black },
     [SchemeTag5]       = { pink,    black,  black },
-    [SchemeLayout]     = { green,   black,  black },
+    [SchemeLayout]     = {"#88c0d0",black,  black },
     [SchemeBtnPrev]    = { green,   black,  black },
     [SchemeBtnNext]    = { yellow,  black,  black },
     [SchemeBtnClose]   = { red,     black,  black },
 };
 
 /* tagging */
-static char *tags[] = {"", "", "", "", ""};
+static char *tags[] = {"一", "二", "三", "四", "五", "六", "七", "八", "九"};
 
-static const char* eww[] = { "eww", "open" , "eww", NULL };
+static const char* pavucontrol[] = { "pavucontrol", NULL };
 
 static const Launcher launchers[] = {
     /* command     name to display */
-    { eww,         "" },
+    { pavucontrol,         "墳" },
 };
 
 static const int tagschemes[] = {
-    SchemeTag1, SchemeTag2, SchemeTag3, SchemeTag4, SchemeTag5
+    SchemeTag1, SchemeTag2, SchemeTag3, SchemeTag4, SchemeTag5,
+    SchemeTag1, SchemeTag2, SchemeTag3, SchemeTag4
 };
 
 static const unsigned int ulinepad      = 5; /* horizontal padding between the underline and tag */
@@ -98,7 +99,7 @@ static const int lockfullscreen = 1; /* 1 will force focus on the fullscreen win
 
 static const Layout layouts[] = {
     /* symbol     arrange function */
-    { "[]=",      tile },    /* first entry is default */
+    { "[T]",      tile },    /* first entry is default */
     { "[M]",      monocle },
     { "[@]",      spiral },
     { "[\\]",     dwindle },
@@ -111,7 +112,7 @@ static const Layout layouts[] = {
     { ":::",      gaplessgrid },
     { "|M|",      centeredmaster },
     { ">M>",      centeredfloatingmaster },
-    { "><>",      NULL },    /* no layout function means floating behavior */
+    { "[F]",      NULL },    /* no layout function means floating behavior */
     { NULL,       NULL },
 };
 
@@ -139,13 +140,13 @@ static Key keys[] = {
     {0,              XF86XK_MonBrightnessUp,        spawn,          SHCMD("xbacklight -inc 5")},
 
     // screenshot fullscreen and cropped
-    {MODKEY|ControlMask,                XK_u,       spawn,
-        SHCMD("maim | xclip -selection clipboard -t image/png")},
-    {MODKEY,                            XK_u,       spawn,
-        SHCMD("maim --select | xclip -selection clipboard -t image/png")},
+    // {MODKEY|ControlMask,                XK_u,       spawn,
+    //     SHCMD("maim | xclip -selection clipboard -t image/png")},
+    // {MODKEY,                            XK_u,       spawn,
+    //     SHCMD("maim --select | xclip -selection clipboard -t image/png")},
 
-    { MODKEY,                           XK_c,       spawn,          SHCMD("rofi -show drun") },
-    { MODKEY,                           XK_Return,  spawn,            SHCMD("st")},
+    { MODKEY,                           XK_p,       spawn,          SHCMD("rofi -show drun") },
+    { MODKEY|ShiftMask,                 XK_Return,  spawn,          SHCMD("alacritty")},
 
     // toggle stuff
     { MODKEY,                           XK_b,       togglebar,      {0} },
@@ -169,7 +170,7 @@ static Key keys[] = {
 
     { MODKEY|ShiftMask,                 XK_j,       movestack,      {.i = +1 } },
     { MODKEY|ShiftMask,                 XK_k,       movestack,      {.i = -1 } },
-    { MODKEY|ShiftMask,                 XK_Return,  zoom,           {0} },
+    { MODKEY,                           XK_Return,  zoom,           {0} },
     { MODKEY,                           XK_Tab,     view,           {0} },
 
     // overall gaps
@@ -213,15 +214,15 @@ static Key keys[] = {
     { MODKEY|ShiftMask,                 XK_period,  tagmon,         {.i = +1 } },
 
     // change border size
-    { MODKEY|ShiftMask,                 XK_minus,   setborderpx,    {.i = -1 } },
-    { MODKEY|ShiftMask,                 XK_p,       setborderpx,    {.i = +1 } },
-    { MODKEY|ShiftMask,                 XK_w,       setborderpx,    {.i = default_border } },
+    // { MODKEY|ShiftMask,                 XK_minus,   setborderpx,    {.i = -1 } },
+    // { MODKEY|ShiftMask,                 XK_p,       setborderpx,    {.i = +1 } },
+    // { MODKEY|ShiftMask,                 XK_w,       setborderpx,    {.i = default_border } },
 
     // kill dwm
-    { MODKEY|ControlMask,               XK_q,       spawn,        SHCMD("killall bar.sh dwm") },
+    { MODKEY|ShiftMask,                 XK_q,       spawn,        SHCMD("killall bar.sh dwm") },
 
     // kill window
-    { MODKEY,                           XK_q,       killclient,     {0} },
+    { MODKEY|ShiftMask,                 XK_c,       killclient,     {0} },
 
     // restart
     { MODKEY|ShiftMask,                 XK_r,       restart,           {0} },
