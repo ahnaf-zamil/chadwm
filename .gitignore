@@ -4,3 +4,4 @@ chadwm/*.o
 chadwm/*.orig
 chadwm/*.rej
 .ccls-cache/
+.SRCINFO
