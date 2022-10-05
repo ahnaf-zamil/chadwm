@@ -1,5 +1,5 @@
 # Maintainer: DevGuyAhnaf <ahnaf@ahnafzamil.com>
-pkgname=chadwm-devguyahnaf
+pkgname=chadwm-devguyahnaf-git
 _pkgname=chadwm
 _output_dir=~/.config/chadwm
 pkgver=0.1

@@ -26,7 +26,13 @@ FYI, ChadWM is basically a DWM rice/modif. So I basically riced the rice :)
 - rofi
 - pavucontrol
 
-# Install
+# Install (from AUR)
+
+```
+yay -S chadwm-devguyahnaf-git
+```
+
+# Install (manually)
 
 ```
 git clone https://github.com/ahnaf-zamil/chadwm --depth 1  ~/.config
