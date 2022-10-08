@@ -6,6 +6,10 @@ I've been using DWM for a while, so I thought why not used ChadWM cuz I'm a chad
 
 FYI, ChadWM is basically a DWM rice/modif. So I basically riced the rice :)
 
+## ATTENTION
+
+The development of this project has been moved to [GitLab](https://gitlab.com/ahnaf-zamil/chadwm). No PR or issues on this repo will be responded to, please make them on the GitLab repo. Thank you :) 
+
 # Screenshots
 
 <img src="./screenshot.png">
